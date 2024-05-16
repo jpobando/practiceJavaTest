@@ -10,6 +10,8 @@ import com.practice.movies.infrastructure.adapters.jpa.entity.MovieDbo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Repository
 public class MovieAdapterRepository implements IMovieRepository {
@@ -32,5 +34,11 @@ public class MovieAdapterRepository implements IMovieRepository {
         );
         MovieDbo movieDbo = movieRepository.save(movieToSave);
         return MovieDbo.toDomain(movieDbo);
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        List<MovieDbo> movieListDbo = movieRepository.findAll();
+        return movieListDbo.stream().map(MovieDbo::toDomain).toList();
     }
 }

@@ -8,10 +8,7 @@ import com.practice.movies.infrastructure.entrypoint.dto.ResponseDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -30,5 +27,16 @@ public class MovieEntryPoint {
                 .status(HttpStatus.OK.value())
                 .message("Respuesta OK")
                 .build();
+    }
+
+    @GetMapping
+    public ResponseDto<?> getMovies(){
+        return ResponseDto.builder()
+                .data(movieUseCase.getMovies().stream().map(MovieDto::fromDomain).toList())
+                .status(HttpStatus.OK.value())
+                .message("Respuesta OK")
+                .build();
+
+
     }
 }

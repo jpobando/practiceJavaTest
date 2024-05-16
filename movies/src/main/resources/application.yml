@@ -2,13 +2,13 @@ spring:
   application:
     name: movies
   jpa:
-    database: moviesdb
+    database: POSTGRESQL
     show-sql: true
     hibernate:
       ddl-auto: update
     datasource:
       platform: postgres
-      url: jdbc:postgresql://localhost:5433/moviesdb
+      url: jdbc:postgresql://localhost:5432/moviesdb
       username: postgres
       password: postgres
       driverClassName: org.postgresql.Driver

@@ -11,6 +11,14 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: practica
+    ports:
+      - "8020:8020"
+    depends_on:
+      - db
 volumes:
   postgres_data:
