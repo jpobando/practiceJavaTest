@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: movies
+  jpa:
+    database: moviesdb
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    datasource:
+      platform: postgres
+      url: jdbc:postgresql://localhost:5433/moviesdb
+      username: postgres
+      password: postgres
+      driverClassName: org.postgresql.Driver
+server:
+  port: 8020
+  servlet:
+    context-path: /api
